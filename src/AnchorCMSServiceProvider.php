@@ -3,6 +3,7 @@
 namespace CapeAndBay\AnchorCMS;
 
 use Illuminate\Support\ServiceProvider;
+use CapeAndBay\AnchorCMS\Services\LibraryService;
 
 class AnchorCMSServiceProvider extends ServiceProvider
 {
@@ -14,11 +15,13 @@ class AnchorCMSServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(\Illuminate\Routing\Router $router)
     {
         $this->loadConfigs();
 
         $this->publishFiles();
+
+        $this->loadRoutes();
     }
 
     /**
@@ -28,9 +31,10 @@ class AnchorCMSServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Bind the AlCommerce object to Laravel's service container
+        // Bind the AllCommerce object to Laravel's service container
         $this->app->singleton('AnchorCMS', function ($app) {
-            return new \CapeAndBay\AnchorCMS\AnchorCMS($app);
+            $lib = new LibraryService();
+            return new \CapeAndBay\AnchorCMS\AnchorCMS($lib);
         });
     }
 
@@ -57,5 +61,10 @@ class AnchorCMSServiceProvider extends ServiceProvider
         // register all possible publish commands and assign tags to each
         $this->publishes($capeandbay_config_files, 'config');
         $this->publishes($minimum, 'minimum');
+    }
+
+    public function loadRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__.'/routes/capeandbay/anchor-cms.php');
     }
 }

@@ -18,9 +18,28 @@ class LibraryService
             case 'ad-budgets':
                 $results = $this->getClientBudget();
                 break;
+
+            default:
+                $results = $this->basicLoadObj($feature);
         }
 
         return $results;
+    }
+
+    public function basicLoadObj($name)
+    {
+        try
+        {
+            $port_model_name = config('anchor-cms.class_maps.'.$name);
+
+            $results = new $port_model_name();
+        }
+        catch(\Exception $e)
+        {
+            $results = true;
+        }
+
+        return new $results;
     }
 
     public function getClientBudget()

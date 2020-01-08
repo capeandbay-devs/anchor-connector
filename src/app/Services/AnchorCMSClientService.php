@@ -42,4 +42,65 @@ class AnchorCMSClientService
 
         return $results;
     }
+
+    public function post($endpoint, $args = [], $headers = [])
+    {
+        $results = false;
+
+        $url = $endpoint;
+
+        if(!empty($args))
+        {
+            if(!empty($headers))
+            {
+                $response = Curl::to($url)
+                    ->withHeaders($headers)
+                    ->withData($args)
+                    ->asJson(true)
+                    ->post();
+            }
+            else
+            {
+                $response = Curl::to($url)
+                    ->withData($args)
+                    ->asJson(true)
+                    ->post();
+            }
+        }
+        elseif(!empty($headers))
+        {
+            $response = Curl::to($url)
+                ->withHeaders($headers)
+                ->asJson(true)
+                ->post();
+        }
+        else
+        {
+            $response = Curl::to($url)
+                ->asJson(true)
+                ->post();
+        }
+
+        if($response)
+        {
+            Log::info('AnchorCMS Response from '.$url, $response);
+            $results = $response;
+        }
+        else
+        {
+            Log::info('AnchorCMS Null Response from '.$url);
+        }
+
+        if($response)
+        {
+            Log::info('AnchorCMS Response from '.$url, $response);
+            $results = $response;
+        }
+        else
+        {
+            Log::info('AnchorCMS Null Response from '.$url);
+        }
+
+        return $results;
+    }
 }

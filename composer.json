@@ -12,7 +12,8 @@
   "minimum-stability": "dev",
   "require": {
     "laravel/framework": "5.8.*|^6.0",
-    "ixudra/curl": "^6.17"
+    "ixudra/curl": "^6.17",
+    "silber/bouncer": "v1.0.0-rc.6"
   },
   "autoload": {
     "psr-4": {
@@ -22,7 +23,7 @@
   "extra": {
     "laravel": {
       "branch-alias": {
-        "dev-master": "0.1.0-dev"
+        "dev-master": "0.2.0-dev"
       },
       "providers": [
         "CapeAndBay\\AnchorCMS\\AnchorCMSServiceProvider"

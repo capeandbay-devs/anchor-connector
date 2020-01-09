@@ -50,7 +50,23 @@ class SSOLoginController extends Controller
                     }
 
                     // auth the user and redirect to redirect URL in the config
-                    Auth::login($user);
+                    if(config('anchor-cms.cms_driver') == 'backpack')
+                    {
+                        try
+                        {
+                            backpack_auth($user);
+                        }
+                        catch(\Exception $e){
+                            Log::info('Backpack not installed, reverting to traditional Auth');
+                            Auth::login($user);
+                        }
+
+                    }
+                    else
+                    {
+                        Auth::login($user);
+                    }
+
                     $redirect_uri = config('anchor-cms.single-sign-on-redirect');
                 }
             }

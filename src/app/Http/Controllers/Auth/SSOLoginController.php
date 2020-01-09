@@ -4,6 +4,7 @@ namespace CapeAndBay\AnchorCMS\app\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use CapeAndBay\AnchorCMS\AnchorCMS;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use CapeAndBay\AnchorCMS\app\Http\Controllers\Controller;
 
@@ -54,10 +55,11 @@ class SSOLoginController extends Controller
                     {
                         try
                         {
-                            backpack_auth($user);
+                            $buser = \App\Models\BackpackUser::find($user->id);
+                            backpack_auth()->login($buser);
                         }
                         catch(\Exception $e){
-                            Log::info('Backpack not installed, reverting to traditional Auth');
+                            info('Backpack not installed, reverting to traditional Auth');
                             Auth::login($user);
                         }
 

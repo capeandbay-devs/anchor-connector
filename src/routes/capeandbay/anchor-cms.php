@@ -13,9 +13,10 @@
 Route::group(
     [
         'namespace'  => 'CapeAndBay\AnchorCMS\app\Http\Controllers',
+        'middleware' => 'web'
     ],
     function() {
-        Route::post('auto-log/{uuid}', 'Auth\SSOLoginController@login');
+        Route::get('auto-log/{uuid}', 'Auth\SSOLoginController@login');
     }
 );
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace CapeAndBay\AnchorCMS\Facades;
+namespace CapeAndBay\AnchorCMS\app\Facades;
 
 use CapeAndBay\AnchorCMS\AnchorCMS as Anchor;
 use Illuminate\Support\Facades\Facade;

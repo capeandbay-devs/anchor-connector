@@ -1,6 +1,6 @@
 <?php
 
-namespace CapeAndBay\AnchorCMS\Library;
+namespace CapeAndBay\AnchorCMS\app\Library;
 
 use CapeAndBay\AnchorCMS\Services\AnchorCMSClientService;
 

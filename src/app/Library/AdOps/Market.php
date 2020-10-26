@@ -1,6 +1,6 @@
 <?php
 
-namespace CapeAndBay\AnchorCMS\Library\AdOps;
+namespace CapeAndBay\AnchorCMS\app\Library\AdOps;
 
 use CapeAndBay\AnchorCMS\Library\Feature;
 

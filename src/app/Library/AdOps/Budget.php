@@ -1,8 +1,8 @@
 <?php
 
-namespace CapeAndBay\AnchorCMS\Library\AdOps;
+namespace CapeAndBay\AnchorCMS\app\Library\AdOps;
 
-use CapeAndBay\AnchorCMS\Library\Feature;
+use CapeAndBay\AnchorCMS\app\Library\Feature;
 
 class Budget extends Feature
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace CapeAndBay\AnchorCMS\Services;
+namespace CapeAndBay\AnchorCMS\app\Services;
 
 class LibraryService
 {

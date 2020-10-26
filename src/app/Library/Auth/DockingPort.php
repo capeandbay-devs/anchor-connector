@@ -1,6 +1,6 @@
 <?php
 
-namespace CapeAndBay\AnchorCMS\Library\Auth;
+namespace CapeAndBay\AnchorCMS\app\Library\Auth;
 
 use CapeAndBay\AnchorCMS\Library\Feature;
 
